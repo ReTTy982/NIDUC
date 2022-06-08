@@ -1,9 +1,10 @@
 import crc_generator.*
 import crc_decoder.*
+import MakeBits.*
 
 input_array = [];
 coded_message = [];
-%input_message = '123';
+input_message = 0xFFB;
 
 %input_array = [32,24,15,16,17,49,85,46,23,456,48]
 
@@ -13,11 +14,12 @@ for i=1:length(input_message)
 end
 %}
 
+input_array = MakeBits(input_message);
 
 
 
-%crc =  crc_generator( input_array) ;
-crc =  crc_generator( input_message);
+crc =  crc_generator( input_array) ;
+% crc =  crc_generator( input_message);
 
 
 for i=1:length(crc)

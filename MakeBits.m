@@ -1,12 +1,15 @@
 function output_message= MakeBits(packet)
 
+if isa(packet,"char")
+    packet = double(packet);
+end
+
 % string_message = 'abcasdasd'; % Tutaj dac wiadomosc string
 % input_message = double(string_message);
 
 % input_message = [0xABCDEF1234,0x1234657,0x123123123];
 input_message = packet;
 output_message = [];
-
 
 
 for numbers=1:length(input_message)
@@ -17,15 +20,23 @@ x= [];
 y = input_message(numbers);
 
 reminder = rem(nextpow2(y),8);
+nextpow2(y)/8
+idivide(nextpow2(y),8,"round")
 if reminder ~= 0
     range = nextpow2(y)/8 + 1;
+    disp("XD")
 else
     range = nextpow2(y)/8;
+    disp("KEK")
 end
 
 
 
 for i=1:range
+    y
+    a
+    b
+    range
     x= [x;bitget(y,a:b)];
     a= a+8;
     b= b+8;
