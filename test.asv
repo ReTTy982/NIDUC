@@ -7,24 +7,21 @@ coded_message = [];
 
 %input_array = [32,24,15,16,17,49,85,46,23,456,48]
 
-%{
 for i=1:length(input_message)
    input_array(i) = input_message(i);
 end
-%}
 
 
 
 
-%crc =  crc_generator( input_array) ;
-crc =  crc_generator( input_message);
+crc =  crc_generator( input_array) ;
 
 
 for i=1:length(crc)
     coded_message(i) = bitshift(input_array(i),16);
     coded_message(i) = coded_message(i) + crc(i);
 end
-%{
+
 for i=1:length(crc)
     if(randi(5,1)==1)
         unlucky_message = coded_message(i);
@@ -39,7 +36,6 @@ for i=1:length(crc)
         coded_message(i) = bin2dec(unlucky_message);
     end
 end
-%}
 
 
 
