@@ -4,7 +4,7 @@ import MakeBits.*
 
 input_array = [];
 coded_message = [];
-input_message = 0xFFB;
+input_message = '?';
 
 %input_array = [32,24,15,16,17,49,85,46,23,456,48]
 
@@ -18,14 +18,15 @@ input_array = MakeBits(input_message);
 
 
 
-crc =  crc_generator( input_array) ;
+[coded_message,crc] =  crc_generator( input_array);
 % crc =  crc_generator( input_message);
 
-
+%{
 for i=1:length(crc)
     coded_message(i) = bitshift(input_array(i),16);
     coded_message(i) = coded_message(i) + crc(i);
 end
+%}
 %{
 for i=1:length(crc)
     if(randi(5,1)==1)

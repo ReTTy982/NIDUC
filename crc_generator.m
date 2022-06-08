@@ -1,8 +1,8 @@
-function answer= crc_generator(packet)
+function [coded_message,answer_temp]= crc_generator(packet)
 
-
+coded_message = [];
+crc = 0;
 for i = 1:length(packet)
-    crc = 0;
     crc = bitxor( crc, bitshift(packet(i),8) ); %dostaje pierwsze 8 bitow do XORowania
     for bit = 1:8
         if bitand( crc, hex2dec('8000') )     % Sprawdzenie czy jestesmy na najstarszej pozycji
@@ -12,8 +12,14 @@ for i = 1:length(packet)
         end
         crc = bitand( crc, hex2dec('ffff') );  % obcinam msb bo wczesniej tylko przez 4 bajty xorowalem
     end
-    answer(i) = crc;
+    answer_temp(i) = crc;
 end
+
+for i=1:length(answer_temp)
+    coded_message(i) = bitshift(packet(i),16);
+    coded_message(i) = coded_message(i) + answer_temp(i);
+end
+
 
 
 

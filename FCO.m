@@ -16,7 +16,7 @@ msg = randi([0 1],1,11)
 %---KODOWANIE WIADOMOSCI---%
 code = mod(msg*G,2) %Wysłany kod
 
-code(7) = ~code(7); %Powodowanie bledu na pozycji i
+code(2) = ~code(2); %Powodowanie bledu na pozycji i
 
 
 %---DEKODOWANIE WIADOMOSCI---%

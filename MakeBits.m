@@ -20,23 +20,14 @@ x= [];
 y = input_message(numbers);
 
 reminder = rem(nextpow2(y),8);
-nextpow2(y)/8
-idivide(nextpow2(y),8,"round")
-if reminder ~= 0
-    range = nextpow2(y)/8 + 1;
-    disp("XD")
-else
-    range = nextpow2(y)/8;
-    disp("KEK")
-end
+
+
+
+range = idivide(int32(nextpow2(y)),8,"round");
 
 
 
 for i=1:range
-    y
-    a
-    b
-    range
     x= [x;bitget(y,a:b)];
     a= a+8;
     b= b+8;
