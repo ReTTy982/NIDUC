@@ -1,5 +1,6 @@
 function [coded_message,answer_temp]= crc_generator(packet)
-
+% wazne - najwazniejszy bit wielomianu nie jst hard codowany, jest bitem
+% ukrytym
 coded_message = [];
 crc = 0;
 for i = 1:length(packet)
